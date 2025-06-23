@@ -125,10 +125,11 @@ ls frontend/dist
 
 Vercel sẽ thực hiện:
 
-1. **Install**: `corepack enable && pnpm install --frozen-lockfile`
-2. **Dependencies**: Tự động install workspace dependencies
-3. **Build**: `cd frontend && npm run build`
-4. **Output**: `frontend/dist/` → Vercel hosting
+1. **Node.js**: Sử dụng version 20.16.0 (từ `package.json` engines)
+2. **Install**: `corepack enable && pnpm install --frozen-lockfile`
+3. **Dependencies**: Tự động install workspace dependencies
+4. **Build**: `cd frontend && npm run build`
+5. **Output**: `frontend/dist/` → Vercel hosting
 
 ## 🔍 Kiểm tra sau deploy
 

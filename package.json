@@ -59,7 +59,7 @@
     "pr-check-other-json": "cd frontend && npx gulp pr-check-other-json && turbo test -- constants/layouts constants/themes"
   },
   "engines": {
-    "node": "20.16.0"
+    "node": ">=20"
   },
   "devDependencies": {
     "@commitlint/cli": "17.7.1",
@@ -88,5 +88,5 @@
     ]
   },
   "version": "25.22.0",
-  "packageManager": "pnpm@9.6.0"
+  "packageManager": "pnpm@latest"
 }
