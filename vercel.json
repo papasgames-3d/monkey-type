@@ -4,12 +4,6 @@
   "outputDirectory": "frontend/dist",
   "installCommand": "corepack enable && pnpm install --frozen-lockfile",
   "framework": null,
-  "nodeVersion": "20.16.0",
-  "functions": {
-    "frontend/dist/**": {
-      "maxDuration": 30
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
