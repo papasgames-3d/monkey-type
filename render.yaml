@@ -1,0 +1,85 @@
+services:
+  # Frontend Static Site
+  - type: web
+    name: monkeytype-frontend
+    env: static
+    buildCommand: cd frontend && npm run build
+    staticPublishPath: frontend/dist
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: Content-Security-Policy
+        value: frame-ancestors 'none'
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /static/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    routes:
+      - type: rewrite
+        source: /privacy-policy
+        destination: /privacy-policy.html
+      - type: rewrite
+        source: /terms-of-service
+        destination: /terms-of-service.html
+      - type: rewrite
+        source: /security-policy
+        destination: /security-policy.html
+      - type: rewrite
+        source: /adtest
+        destination: /adtest.html
+      - type: rewrite
+        source: /test
+        destination: /index.html
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  # Backend API Service
+  - type: web
+    name: monkeytype-backend
+    env: node
+    region: singapore
+    plan: starter
+    buildCommand: cd backend && npm run build
+    startCommand: cd backend && npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # Database connections
+      - key: DB_URI
+        fromDatabase:
+          name: monkeytype-mongodb
+          property: connectionString
+      - key: REDIS_URI
+        fromDatabase:
+          name: monkeytype-redis
+          property: connectionString
+      # Frontend URL (will be your Render static site URL)
+      - key: FRONTEND_URL
+        value: https://monkeytype-frontend.onrender.com
+      # Firebase Admin (optional - for user accounts)
+      # You need to upload serviceAccountKey.json to Render or use env vars
+      # - key: FIREBASE_SERVICE_ACCOUNT
+      #   value: your-service-account-json-as-string
+      # ReCaptcha (optional - for signup protection)  
+      # - key: RECAPTCHA_SECRET
+      #   value: your-recaptcha-secret-key
+
+# Databases
+databases:
+  - name: monkeytype-mongodb
+    databaseName: monkeytype
+    user: monkeytype
+    region: singapore
+    plan: starter
+
+  - name: monkeytype-redis
+    name: monkeytype-redis
+    region: singapore
+    plan: starter
+    maxmemoryPolicy: allkeys-lru 
