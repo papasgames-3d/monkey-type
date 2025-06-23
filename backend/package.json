@@ -21,7 +21,7 @@
     "gen-docs": "tsx scripts/openapi.ts dist/static/api/openapi.json && redocly build-docs -o dist/static/api/internal.html internal@v2 && redocly bundle -o dist/static/api/public.json public-filter && redocly build-docs -o dist/static/api/public.html public@v2"
   },
   "engines": {
-    "node": ">=20"
+    "node": "20"
   },
   "dependencies": {
     "@date-fns/utc": "1.2.0",
@@ -94,11 +94,20 @@
     "ioredis-mock": "7.4.0",
     "openapi3-ts": "2.0.2",
     "oxlint": "1.1.0",
-    "readline-sync": "1.4.10",
-    "supertest": "6.2.3",
-    "tsx": "4.16.2",
-    "typescript": "5.5.4",
-    "vitest": "2.1.9",
-    "vitest-mongodb": "1.0.0"
-  }
+    "prettier": "2.8.8",
+    "turbo": "2.3.3",
+    "vitest": "2.1.9"
+  },
+  "lint-staged": {
+    "*.{json,scss,css,html}": [
+      "prettier --write"
+    ],
+    "*.{ts,js}": [
+      "prettier --write",
+      "oxlint",
+      "eslint"
+    ]
+  },
+  "version": "25.22.0",
+  "packageManager": "pnpm@9.6.0"
 }
