@@ -28,7 +28,25 @@
       ]
     },
     {
-      "source": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|ico|json|wav|txt|xml))",
+      "source": "/**/*.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/**/*.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/**/*.(png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -68,7 +86,7 @@
       "destination": "/index.html"
     },
     {
-      "source": "/((?!.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|json|txt|xml|wav|html)|about|challenges|fonts|funbox|images|languages|layouts|quotes|sound|themes|webfonts|static).*)",
+      "source": "/((?!api|about|challenges|fonts|funbox|images|languages|layouts|quotes|sound|themes|webfonts|static|.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|json|txt|xml|wav|html)).*)",
       "destination": "/index.html"
     }
   ]
