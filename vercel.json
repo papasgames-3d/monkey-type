@@ -28,7 +28,7 @@
       ]
     },
     {
-      "source": "/**/*.js",
+      "source": "/(.*)\\.js",
       "headers": [
         {
           "key": "Cache-Control",
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "source": "/**/*.css",
+      "source": "/(.*)\\.css",
       "headers": [
         {
           "key": "Cache-Control",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "source": "/**/*.(png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)",
+      "source": "/(.*)\\.woff2?",
       "headers": [
         {
           "key": "Cache-Control",
