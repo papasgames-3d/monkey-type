@@ -105,7 +105,7 @@
     "konami": "1.7.0",
     "lz-ts": "1.1.2",
     "object-hash": "3.0.0",
-    "slim-select": "2.9.2",
+    "slim-select": "2.12.1",
     "stemmer": "2.0.1",
     "throttle-debounce": "5.0.2",
     "zod": "3.23.8",
